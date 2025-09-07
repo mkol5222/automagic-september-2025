@@ -52,3 +52,28 @@ resource "checkpoint_management_access_rule" "vnet_egress" {
   action          = "Accept"
 }
 
+// LocalMachine_All_Interfaces
+
+resource "checkpoint_management_access_rule" "codespace_access" {
+  name        = "SingleGW access from Codespace"
+  layer       = local.layer_name
+  position    = { below = checkpoint_management_access_section.rules.id }
+  source      = ["codespace"] # [checkpoint_management_host.codespace.id]
+  destination = ["LocalMachine_All_Interfaces"]
+  service     = ["HTTP", "HTTPS", "SSH", "icmp-proto"]
+  content     = ["Any"]
+  time        = ["Any"]
+  install_on  = ["Policy Targets"]
+  track = {
+    type                    = "Log"
+    accounting              = false
+    alert                   = "none"
+    enable_firewall_session = false
+    per_connection          = true
+    per_session             = false
+  }
+  action_settings = {}
+  custom_fields   = {}
+  vpn             = "Any"
+  action          = "Accept"
+}

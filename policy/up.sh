@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+
+MYPUBIP=$(curl -s http://ip.iol.cz/ip/)
+export TF_VAR_codespace_ip="$MYPUBIP"
+
 export CHECKPOINT_SESSION_NAME="TF $(whoami) $(date) from $(hostname)"
 export CHECKPOINT_SESSION_DESCRIPTION="Terraform session description"
 

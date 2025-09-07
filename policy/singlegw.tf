@@ -1,4 +1,5 @@
 
 module "singlegw" {
+    depends_on = [checkpoint_management_host.codespace]
   source = "./singlegw"
 }
