@@ -38,6 +38,8 @@ Go to mamagememt server using
 
 and run the following command:
 
+mgmt_cli -r true add host name "localhost" ipv4-address "127.0.0.1" color "blue" ignore-warnings true
+
 mgmt_cli -r true \
   add simple-gateway \
   name "${GW}" color "blue" \

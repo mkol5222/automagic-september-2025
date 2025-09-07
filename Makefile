@@ -3,7 +3,7 @@
 # cpman = multiple Management deploymennt steps
 #
 
-cpman: management-up management-api  management-secrets policy-up management-info
+cpman: management-up management-api  management-secrets policy-up management-ssh-add-key management-info
 cpman-up: cpman
 cpman-down: management-down
 cpman-serial: management-serial
@@ -42,6 +42,8 @@ management-api:
 	(cd management; ./api.sh)
 management-secrets:
 	(cd management; ./secrets.sh)
+management-ssh-add-key:
+	(cd management; ./ssh-add-key.sh)
 
 ###
 #
@@ -73,3 +75,19 @@ singlegw-install-policy:
 	(cd management; ./ssh.sh mgmt_cli -r true install-policy policy-package singlegw)
 singlegw-sic:
 	(cd singlegw; ./sic.sh)
+singlegw-pass-reset:
+	(cd singlegw; ./pass-reset.sh)
+
+
+###
+#
+# Experiments
+#
+
+# works with: make run ARG=hello
+# or: export ARG=hello; make run
+# or: ARG=hello make run
+# ARG has a default value if not set
+ARG ?= default_value
+run:
+	@echo "Running with argument: $(ARG)"
