@@ -7,7 +7,6 @@ resource "random_password" "admin_password" {
   numeric          = true
   override_special = "!@#$%^&*()_+"
   keepers = {
-    // generate a new password only if this value changes
-    sic_key = var.sic_key
+    envId = local.envId
   }
 }
