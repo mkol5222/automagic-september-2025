@@ -12,6 +12,10 @@
   - script to wait for Management API to be available with `make management-api`
   - save management credentials for policy automation to `secrets/management.env` with `make management-secrets`
   - basic policy with `make policy-up`
+  - single gateway scenario similar to Azure reference architecture sk109360 in `single-gw` folder
+  - ability to monitor gateway installation progress using `make singlegw-serial`
+  - access gateway with `make singlegw-ssh`
+  - info including IP and password with `make singlegw-info`
 
 
 
