@@ -92,7 +92,7 @@ module "gw" {
   installation_type              = "gateway"
   serial_console_password_hash   = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   maintenance_mode_password_hash = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  nsg_id                         = ""
+  nsg_id                         = module.vnet.nsg_id
   add_storage_account_ip_rules   = false
   storage_account_additional_ips = []
 

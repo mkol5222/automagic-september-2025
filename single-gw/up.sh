@@ -14,4 +14,5 @@ export TF_VAR_sic_key="$SIC_KEY"
 
 
 terraform init
+terraform apply -auto-approve -target module.vnet
 terraform apply -auto-approve
