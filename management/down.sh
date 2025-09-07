@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-terraform destroy
+terraform destroy -auto-approve
 
 echo "Remaining resources (if any):"
 terraform state list
