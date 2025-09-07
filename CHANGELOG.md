@@ -18,6 +18,8 @@
   - info including IP and password with `make singlegw-info`
   - "lite CME" experience with "add simple-gateway" based script `make singlegw-cme`
   - policy package `singlegw` and basic rulebase 
+  - install policy on gateway with `make singlegw-install-policy`
+  - main `README.md` with getting started and instructions for management and single gateway; and cleanup instructions
 
 
 
