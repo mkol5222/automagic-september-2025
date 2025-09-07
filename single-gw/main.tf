@@ -1,6 +1,7 @@
 
 locals {
   rg_name      = "automagic-singlegw-${local.envId}"
+  vnet_rg_name = "automagic-singlegw-${local.envId}-vnet"
   location     = "North Europe"
   vnet_name    = "vnet-singlegw-${local.envId}"
   vnet_address = "10.104.0.0/16"
@@ -37,8 +38,8 @@ locals {
 
 
 
-resource "azurerm_resource_group" "rg" {
-  name     = local.rg_name
+resource "azurerm_resource_group" "vnet_rg" {
+  name     = local.vnet_rg_name
   location = local.location
 
 
@@ -46,13 +47,13 @@ resource "azurerm_resource_group" "rg" {
 
 module "vnet" {
 
-  depends_on = [azurerm_resource_group.rg]
+  depends_on = [azurerm_resource_group.vnet_rg]
 
   source = "./vnet"
 
   envId        = local.envId
-  location     = azurerm_resource_group.rg.location
-  rg_name      = azurerm_resource_group.rg.name
+  location     = azurerm_resource_group.vnet_rg.location
+  rg_name      = azurerm_resource_group.vnet_rg.name
   vnet_name    = local.vnet_name
   vnet_address = local.vnet_address
   subnets      = local.subnets
@@ -69,7 +70,7 @@ module "gw" {
   single_gateway_name            = local.gw_name
   location                       = local.location
   vnet_name                      = local.vnet_name
-  vnet_resource_group            = local.rg_name
+  vnet_resource_group            = local.vnet_rg_name
   subnet_frontend_name           = "frontend"
   subnet_backend_name            = "backend"
   subnet_frontend_1st_Address    = local.frontend_first_ip

@@ -2,6 +2,7 @@
 
 set -euo pipefail
 
+
 # random password for sic key
 SIC_KEY=$(cat ../secrets/singlegw-sic.txt 2>/dev/null || true)
 if [[ -z "$SIC_KEY" ]]; then
@@ -13,5 +14,8 @@ export TF_VAR_sic_key="$SIC_KEY"
 
 
 
-terraform init
-terraform apply -auto-approve
+terraform destroy -auto-approve
+
+echo "Remaining resources (if any):"
+terraform state list
+echo "---"
