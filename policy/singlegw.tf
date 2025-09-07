@@ -1,0 +1,4 @@
+
+module "singlegw" {
+  source = "./singlegw"
+}

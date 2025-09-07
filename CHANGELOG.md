@@ -16,6 +16,8 @@
   - ability to monitor gateway installation progress using `make singlegw-serial`
   - access gateway with `make singlegw-ssh`
   - info including IP and password with `make singlegw-info`
+  - "lite CME" experience with "add simple-gateway" based script `make singlegw-cme`
+  - policy package `singlegw` and basic rulebase 
 
 
 

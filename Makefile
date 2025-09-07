@@ -69,3 +69,5 @@ singlegw-ssh:
 	(cd singlegw; ./ssh.sh)
 singlegw-cme:
 	(cd singlegw; ./cme.sh)
+singlegw-install-policy:
+	(cd management; ./ssh.sh mgmt_cli -r true install-policy policy-package singlegw)

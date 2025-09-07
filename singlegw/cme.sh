@@ -32,11 +32,17 @@ GW="$NAME"
 PUBLIC_IP="$GATEWAY_IP"
 
 cat <<EOF
+
+Go to mamagememt server using 
+   make management-ssh
+
+and run the following command:
+
 mgmt_cli -r true \
   add simple-gateway \
   name "${GW}" color "blue" \
   ipv4-address "${PUBLIC_IP}" \
-  version "R81.20" \
+  version "R82" \
   one-time-password "${SIC_KEY}" \
   firewall true vpn false application-control false url-filtering false ips true \
   anti-bot false anti-virus false threat-emulation false \
