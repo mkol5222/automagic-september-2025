@@ -24,3 +24,5 @@ management-info:
 	(cd management; ./info.sh)
 management-ssh:
 	(cd management; ./ssh.sh)
+management-api:
+	(cd management; ./api.sh)

@@ -21,4 +21,10 @@ make management-info
 
 # connect to management server command-line
 make management-ssh
+
+# SmartConsole and policy via Terraform depend on read API server. Wait
+make management-api
+
+# info for SmartConsole again
+make management-info
 ```
