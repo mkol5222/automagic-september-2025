@@ -14,6 +14,7 @@ sp-delete:
 #
 # Security Management
 #
+management: management-up
 management-up:
 	(cd management; ./up.sh)
 management-down:
@@ -26,3 +27,15 @@ management-ssh:
 	(cd management; ./ssh.sh)
 management-api:
 	(cd management; ./api.sh)
+management-secrets:
+	(cd management; ./secrets.sh)
+
+###
+#
+# Policy
+#
+
+policy: policy-up
+policy-up:
+	(cd policy; ./up.sh)
+

@@ -10,6 +10,8 @@
   - access management with `make management-ssh`
   - info including IP and password with `make management-info`
   - script to wait for Management API to be available with `make management-api`
+  - save management credentials for policy automation to `secrets/management.env` with `make management-secrets`
+  - basic policy with `make policy-up`
 
 
 
