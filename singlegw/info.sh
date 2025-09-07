@@ -19,6 +19,7 @@ Admin Username:   admin
 Admin Password:   $ADMIN_PASSWORD
 Gateway IP:       $GATEWAY_IP
 SIC key:          $SIC_KEY
+GaiaOS Web UI:    https://$GATEWAY_IP:443
 
 Commands:
     ssh admin@$GATEWAY_IP

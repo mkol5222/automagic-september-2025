@@ -59,7 +59,7 @@ resource "checkpoint_management_access_rule" "codespace_access" {
   layer       = local.layer_name
   position    = { below = checkpoint_management_access_section.rules.id }
   source      = ["codespace"] # [checkpoint_management_host.codespace.id]
-  destination = ["LocalMachine_All_Interfaces"]
+  destination =  [local.gw_name] # ["LocalGatewayExternal"]
   service     = ["HTTP", "HTTPS", "SSH", "icmp-proto"]
   content     = ["Any"]
   time        = ["Any"]

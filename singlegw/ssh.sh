@@ -25,5 +25,6 @@ Gateway IP:       $GATEWAY_IP
 
 EOF
 
+echo "Connecting to $GATEWAY_IP as admin..."
 # notice ability to pass commands with script args "$@"
 ssh admin@"$GATEWAY_IP" "$@"
