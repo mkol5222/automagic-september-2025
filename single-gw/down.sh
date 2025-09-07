@@ -14,6 +14,7 @@ export TF_VAR_sic_key="$SIC_KEY"
 
 
 
+terraform destroy -auto-approve -target module.gw
 terraform destroy -auto-approve
 
 echo "Remaining resources (if any):"
