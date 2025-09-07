@@ -12,5 +12,20 @@ ADMIN_PASSWORD=$(terraform output -raw admin_password)
 
 (cd ../management/; ./ssh.sh '(uname -a; uptime)' )
 
+
+HASHED_PASSWORD=$(openssl passwd -1 "$ADMIN_PASSWORD")
+
+SCRIPT=$(cat <<EOF | base64 -w0
+#!/bin/bash
+clish -s -c 'lock database override'
+# clish -s -c 'add user admin3 uid 1003 homedir /home/admin3'
+# clish -s -c 'add rba user admin3 roles adminRole'
+# clish -s -c 'set user admin3 shell /bin/bash'
+clish -s -c 'set user admin password-hash $HASHED_PASSWORD'
+clish -s -c 'unlock database'
+EOF
+)
+
+
 ####
-mgmt_cli -r true run-script targets automagic-singlegw-dc2e2ef4 script-name "Reset Gateway Password" script 'uname -a; cat /etc/os-release)'
+(cd ../management/; ./ssh.sh mgmt_cli -r true run-script targets "$NAME" script-name "Reset_Gateway_Password" script-base64 "$SCRIPT")

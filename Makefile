@@ -77,6 +77,8 @@ singlegw-sic:
 	(cd singlegw; ./sic.sh)
 singlegw-pass-reset:
 	(cd singlegw; ./pass-reset.sh)
+singlegw-ssh-add-key:
+	(cd singlegw; ./ssh-add-key.sh)
 
 
 ###
