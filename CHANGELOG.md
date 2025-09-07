@@ -9,7 +9,8 @@
   - ability to monitor installation progress using `make management-serial`
   - access management with `make management-ssh`
   - info including IP and password with `make management-info`
-  
+  - script to wait for Management API to be available with `make management-api`
+
 
 
 
