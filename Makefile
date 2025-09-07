@@ -3,9 +3,13 @@
 # cpman = multiple Management deploymennt steps
 #
 
-cpman: management-up management-api policy-up management-secrets management-info
+cpman: management-up management-api  management-secrets policy-up management-info
 cpman-up: cpman
 cpman-down: management-down
+cpman-serial: management-serial
+cpman-ssh: management-ssh
+cpman-info: management-info
+cpman-api: management-api
 
 ###
 #
@@ -63,3 +67,5 @@ singlegw-info:
 	(cd singlegw; ./info.sh)
 singlegw-ssh:
 	(cd singlegw; ./ssh.sh)
+singlegw-cme:
+	(cd singlegw; ./cme.sh)
