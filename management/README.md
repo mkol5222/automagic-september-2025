@@ -16,6 +16,9 @@ make management-up
 # monitor deployment on serial console
 make management-serial
 
-# basic information about deployment
+# management information to connect with SSH or SmartConsole
 make management-info
+
+# connect to management server command-line
+make management-ssh
 ```

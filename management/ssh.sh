@@ -25,4 +25,5 @@ Management IP:    $CPMAN_IP
 
 EOF
 
-ssh admin@"$CPMAN_IP"
+# notice ability to pass commands with script args "$@"
+ssh admin@"$CPMAN_IP" "$@"
