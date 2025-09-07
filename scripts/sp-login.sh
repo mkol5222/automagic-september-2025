@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # logout first
 echo "Logging out..."
 az logout || true
