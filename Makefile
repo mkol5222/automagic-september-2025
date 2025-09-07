@@ -1,5 +1,14 @@
 ###
 #
+# cpman = multiple Management deploymennt steps
+#
+
+cpman: management-up management-api policy-up management-secrets management-info
+cpman-up: cpman
+cpman-down: management-down
+
+###
+#
 # Service Principal
 #
 
@@ -45,12 +54,12 @@ policy-up:
 #
 singlegw: singlegw-up
 singlegw-up:
-	(cd single-gw; ./up.sh)
+	(cd singlegw; ./up.sh)
 singlegw-down:
-	(cd single-gw; ./down.sh)
+	(cd singlegw; ./down.sh)
 singlegw-serial:
-	(cd single-gw; ./serial.sh)
+	(cd singlegw; ./serial.sh)
 singlegw-info:
-	(cd single-gw; ./info.sh)
+	(cd singlegw; ./info.sh)
 singlegw-ssh:
-	(cd single-gw; ./ssh.sh)
+	(cd singlegw; ./ssh.sh)
