@@ -59,6 +59,16 @@ module "vnet" {
   subnets      = local.subnets
 }
 
+# module "web_server" {
+#   depends_on = [module.vnet]
+#   source     = "./linux"
+#   subnet_id = module.spoke68.subnet_id
+#     vm_name = "linux68"
+#     # vm_size = "Standard_DS1_v2"
+#     linux_rg_name = "automagic-linux68-rg"
+#     linux_location = "North Europe"
+# }
+
 
 module "gw" {
   depends_on = [module.vnet]
