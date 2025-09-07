@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+# does secrets/sp.json and secrets/reader.json exist?
+if [[ ! -f secrets/sp.json ]]; then
+  echo "secrets/sp.json does not exist"
+  exit 1
+fi
+
 # logout first
 echo "Logging out..."
 az logout || true
