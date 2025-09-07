@@ -19,8 +19,7 @@ WEB VM deployment info:
 
 Resource Group:   $RG
 Name:             $NAME
-Admin Username:   admin
-
+Admin Username:   azureuser
 VM IP:            $VMIP
 
 EOF

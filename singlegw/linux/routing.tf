@@ -1,7 +1,7 @@
 resource "azurerm_route_table" "linux-rt" {
 
 
-  name                = "linux-rt-tf"
+  name                = "${var.vm_name}-rt-tf"
   location            = azurerm_resource_group.linux.location
   resource_group_name = azurerm_resource_group.linux.name
   #disable_bgp_route_propagation = false

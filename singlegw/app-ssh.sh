@@ -7,24 +7,23 @@ fi
 
 set -euo pipefail
 
-RG=$(terraform output -raw rg)
-NAME=$(terraform output -raw name)
+RG=$(terraform output -raw app_rg)
+NAME=$(terraform output -raw app_name)
 ADMIN_PASSWORD=$(terraform output -raw admin_password)
 
-GATEWAY_IP=$(az vm show -d --resource-group "$RG" --name "$NAME" --query "publicIps" -o tsv)
+VMIP=$(az vm show -d --resource-group "$RG" --name "$NAME" --query "publicIps" -o tsv)
 
 cat <<EOF
 
-SINGLE GATEWAY deployment info:
+APP VM deployment info:
 
 Resource Group:   $RG
 Name:             $NAME
-Admin Username:   admin
-Admin Password:   $ADMIN_PASSWORD
-Gateway IP:       $GATEWAY_IP
+Admin Username:   azureuser
+VM IP:            $VMIP
 
 EOF
 
-echo "Connecting to $GATEWAY_IP as admin..."
+echo "Connecting to $VMIP as azureuser..."
 # notice ability to pass commands with script args "$@"
-ssh admin@"$GATEWAY_IP" "$@"
+ssh "azureuser@$VMIP" "$@"
