@@ -3,6 +3,9 @@
 secrets/
 
 
+# Check Point
+sid.json
+
 # Local .terraform directories
 .terraform/
 
@@ -40,3 +43,4 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+policy/sid.json
