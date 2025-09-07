@@ -33,3 +33,18 @@ bash <(curl -L https://run.klaud.online/labsp.sh)
 ```
 
 * Follow the instructions to copy&paste service principal credentials into CodeSpace/DevContainer under `secrets` folder.
+
+```bash
+# folder for secrets has to exist under /workspaces/automagic-septemper-2025
+mkdir -p secrets
+
+# follow instructions to bring sp.json and reader.json
+
+# test credentials with simple scripts
+make reader-test
+
+# login as Azure admin
+make sp-login
+
+# congrats
+```
