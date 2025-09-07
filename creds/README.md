@@ -2,6 +2,9 @@
 
 * Create full admin Service Principal for the subscription in [Azure Shell](https://shell.azure.com/)
 
+<details>
+<summary>Service Principal creation script (click to expand)</summary>
+
 ```bash
 ENVID=$(openssl rand -hex 4 | tee /tmp/automagic-envid.txt)
 SUBSCRIPTION=$(az account show --query id --output tsv)
@@ -26,6 +29,7 @@ echo $(echo $READER_SP | jq -c . | base64 -w0) | base64 -d | jq . | tee secrets/
 
 EOF
 ```
+</details>
 
 * You can also run following command in [Azure Shell](https://shell.azure.com/)
 ```bash
