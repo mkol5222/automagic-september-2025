@@ -1,7 +1,7 @@
 
 resource "azurerm_resource_group" "linux" {
-    name     = var.linux_rg_name
-    location = var.linux_location
+  name     = var.linux_rg_name
+  location = var.linux_location
 }
 
 resource "azurerm_linux_virtual_machine" "linuxvm" {
@@ -10,7 +10,7 @@ resource "azurerm_linux_virtual_machine" "linuxvm" {
   resource_group_name   = azurerm_resource_group.linux.name
   network_interface_ids = [azurerm_network_interface.nic.id]
 
-  size                  = var.vm_size
+  size = var.vm_size
 
   os_disk {
     name                 = "${var.vm_name}-myOsDisk"
@@ -20,8 +20,8 @@ resource "azurerm_linux_virtual_machine" "linuxvm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer = "0001-com-ubuntu-server-jammy"
-    sku = "22_04-lts"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
     version   = "latest"
   }
 

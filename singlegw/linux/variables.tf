@@ -1,30 +1,41 @@
 
 variable "vm_name" {
-    description = "The name of the virtual machine"
-    type        = string
-    # default     = "myVM"
+  description = "The name of the virtual machine"
+  type        = string
+  # default     = "myVM"
 }
 
 variable "vm_size" {
-    description = "The size of the virtual machine"
-    type        = string
-    default     = "Standard_B2s" // ""Standard_DS1_v2""
+  description = "The size of the virtual machine"
+  type        = string
+  default     = "Standard_B2s" // ""Standard_DS1_v2""
 }
 
 
 variable "linux_rg_name" {
-    description = "The resource group of the Linux virtual machine"
-    type        = string
-    # default     = "myLinuxRG"
+  description = "The resource group of the Linux virtual machine"
+  type        = string
+  # default     = "myLinuxRG"
 }
 
 variable "linux_location" {
-    description = "The location of the Linux virtual machine"
-    type        = string
-    # default     = "East US"
+  description = "The location of the Linux virtual machine"
+  type        = string
+  # default     = "East US"
 }
 
 variable "subnet_id" {
-    description = "The ID of the subnet"
-    type        = string
+  description = "The ID of the subnet"
+  type        = string
+}
+
+variable "fw_enabled" {
+  description = "Enable CloudGuard Firewall"
+  type        = bool
+  default     = false
+}
+
+variable "myip" {
+  description = "Your public IP address"
+  type        = string
 }

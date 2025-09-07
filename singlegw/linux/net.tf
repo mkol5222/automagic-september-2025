@@ -1,7 +1,7 @@
 resource "azurerm_public_ip" "public_ip" {
   name                = "${var.vm_name}-pip"
-  location              = azurerm_resource_group.linux.location
-  resource_group_name   = azurerm_resource_group.linux.name
+  location            = azurerm_resource_group.linux.location
+  resource_group_name = azurerm_resource_group.linux.name
   allocation_method   = "Static"
 
 
@@ -16,8 +16,8 @@ resource "azurerm_public_ip" "public_ip" {
 
 resource "azurerm_network_security_group" "nsg" {
   name                = "${var.vm_name}-ngs"
-  location              = azurerm_resource_group.linux.location
-  resource_group_name   = azurerm_resource_group.linux.name
+  location            = azurerm_resource_group.linux.location
+  resource_group_name = azurerm_resource_group.linux.name
 
   security_rule {
     name                       = "SSH"
@@ -30,7 +30,7 @@ resource "azurerm_network_security_group" "nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-    security_rule {
+  security_rule {
     name                       = "HTTP"
     priority                   = 1011
     direction                  = "Inbound"
@@ -41,7 +41,7 @@ resource "azurerm_network_security_group" "nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
-    security_rule {
+  security_rule {
     name                       = "HTTPS"
     priority                   = 1021
     direction                  = "Inbound"
@@ -65,8 +65,8 @@ resource "azurerm_network_security_group" "nsg" {
 resource "azurerm_network_interface" "nic" {
 
   name                = "${var.vm_name}-nic"
-  location              = azurerm_resource_group.linux.location
-  resource_group_name   = azurerm_resource_group.linux.name
+  location            = azurerm_resource_group.linux.location
+  resource_group_name = azurerm_resource_group.linux.name
 
   ip_configuration {
     name                          = "myNicConfiguration"

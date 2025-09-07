@@ -80,6 +80,14 @@ singlegw-pass-reset:
 singlegw-ssh-add-key:
 	(cd singlegw; ./ssh-add-key.sh)
 
+###
+#
+# VM access
+# 
+web-ssh:
+	(cd singlegw/; ./web-ssh.sh)
+app-ssh:
+	(cd singlegw/; ./app-ssh.sh)
 
 ###
 #

@@ -59,16 +59,40 @@ module "vnet" {
   subnets      = local.subnets
 }
 
-# module "web_server" {
-#   depends_on = [module.vnet]
-#   source     = "./linux"
-#   subnet_id = module.spoke68.subnet_id
-#     vm_name = "linux68"
-#     # vm_size = "Standard_DS1_v2"
-#     linux_rg_name = "automagic-linux68-rg"
-#     linux_location = "North Europe"
-# }
+locals {
+  web_rg_name = "automagic-webvm-${local.envId}"
+  web_name    = "webvm-${local.envId}"
+  app_rg_name = "automagic-appvm-${local.envId}"
+  app_name    = "appvm-${local.envId}"
+}
 
+locals {
+  myip = data.http.myip.response_body
+}
+
+module "web_server" {
+  depends_on = [module.vnet]
+  source     = "./linux"
+  subnet_id  = module.vnet.subnet_id["web"]
+  vm_name    = local.web_name
+  # vm_size = "Standard_DS1_v2"
+  linux_rg_name  = local.web_rg_name
+  linux_location = "North Europe"
+  fw_enabled     = var.fw_enabled
+  myip           = local.myip
+}
+
+module "app_server" {
+  depends_on = [module.vnet]
+  source     = "./linux"
+  subnet_id  = module.vnet.subnet_id["app"]
+  vm_name    = local.app_name
+  # vm_size = "Standard_DS1_v2"
+  linux_rg_name  = local.app_rg_name
+  linux_location = "North Europe"
+  fw_enabled     = var.fw_enabled
+  myip           = local.myip
+}
 
 module "gw" {
   depends_on = [module.vnet]

@@ -1,31 +1,38 @@
 resource "azurerm_route_table" "linux-rt" {
+
+
   name                = "linux-rt-tf"
-  location              = azurerm_resource_group.linux.location
-  resource_group_name   = azurerm_resource_group.linux.name
+  location            = azurerm_resource_group.linux.location
+  resource_group_name = azurerm_resource_group.linux.name
   #disable_bgp_route_propagation = false
 
 
-  #   route {
-  #     name                   = "to-aks"
-  #     address_prefix         = "10.68.1.0/24"
-  #     next_hop_type          = "VirtualAppliance"
-  #     next_hop_in_ip_address = "10.68.11.4"
-  #   }
 
   route {
     name           = "route-to-my-pub-ip"
-    address_prefix = "${data.http.myip.response_body}/32"
+    address_prefix = "${var.myip}/32"
     next_hop_type  = "Internet"
   }
 
-#   route {
-#     name           = "to-internet"
-#     address_prefix = "0.0.0.0/0"
-#     next_hop_type  = "Internet"
-#   }
-  
+  dynamic "route" {
+    for_each = var.fw_enabled ? [1] : []
+    content {
+      name                   = "to-internet-via-fw"
+      address_prefix         = "0.0.0.0/0"
+      next_hop_type          = "VirtualAppliance"
+      next_hop_in_ip_address = "10.104.1.4"
+    }
+  }
 
-  
+
+  #   route {
+  #     name           = "to-internet"
+  #     address_prefix = "0.0.0.0/0"
+  #     next_hop_type  = "Internet"
+  #   }
+
+
+
 
   lifecycle {
     ignore_changes = [
