@@ -8,5 +8,8 @@
 - accept license with `az vm image terms accept --publisher checkpoint --offer check-point-cg-r82 --plan mgmt-byol`
 - start with direct Internet access and enable firewall via `singlegw` later
 - address localhost before first `make policy-up`
+- `make singlegw-down` fails because of dependent resources (NGS? )
+    - Error: deleting Network Security Group "appvm-b1d5474a-ngs", because old references for the following Nics
+    - Error: deleting Network Security Group "webvm-b1d5474a-ngs", because old references for the following Nics
 
 
