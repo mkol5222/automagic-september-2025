@@ -2,6 +2,11 @@
 
 set -euo pipefail
 
+# if ~/.ssh/id_rsa.pub does not exist, create key without passphrase
+if [ ! -f ~/.ssh/id_rsa.pub ]; then
+  ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa -N ""
+fi
+
 # random password for sic key
 SIC_KEY=$(cat ../secrets/singlegw-sic.txt 2>/dev/null || true)
 if [[ -z "$SIC_KEY" ]]; then
