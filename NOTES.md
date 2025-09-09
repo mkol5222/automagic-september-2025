@@ -41,5 +41,8 @@ cd ttyd && mkdir build && cd build
 cmake ..
 make && sudo make install
 
+# asciinema
+sudo apt install asciinema
+
 # az network nic show-effective-route-table --resource-group automagic-management-7c65eed5 --name cpman-7c65eed5-eth1
 ```
