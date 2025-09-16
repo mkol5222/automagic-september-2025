@@ -101,3 +101,14 @@ app-ssh:
 ARG ?= default_value
 run:
 	@echo "Running with argument: $(ARG)"
+
+
+###
+#
+# vWAN
+#
+
+.PHONY: vwan-up vwan
+vwan-up: vwan
+vwan:
+	(cd vwan; ./up.sh)
