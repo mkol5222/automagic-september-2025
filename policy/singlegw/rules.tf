@@ -4,6 +4,7 @@ locals {
 }
 
 data "checkpoint_management_data_access_rule" "data_access_rule" {
+  depends_on = [checkpoint_management_package.singlegw]
   name = "Cleanup rule"
   layer = local.layer_name
 }
