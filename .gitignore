@@ -2,6 +2,7 @@
 
 secrets/
 
+node_modules/
 
 # Check Point
 sid.json
@@ -46,3 +47,6 @@ terraform.rc
 policy/sid.json
 er.tape
 policy/fingerprints.json
+
+.env.keys
+.env*

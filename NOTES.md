@@ -45,4 +45,10 @@ make && sudo make install
 sudo apt install asciinema
 
 # az network nic show-effective-route-table --resource-group automagic-management-7c65eed5 --name cpman-7c65eed5-eth1
+
+####
+
+# store secrets with dotenvx
+
+source <(cat secrets/sp.json | jq -r 'to_entries[] | "dotenvx set TF_VAR_\(.key) \(.value)"' )
 ```
