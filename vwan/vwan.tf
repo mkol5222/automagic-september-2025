@@ -2,6 +2,10 @@ provider "azurerm" {
   features {}
 }
 
+locals {
+  location = "northeurope"
+}
+
 module "vwan" {
 
     source  = "CheckPointSW/cloudguard-network-security/azure//modules/nva_into_new_vwan"
@@ -13,7 +17,7 @@ module "vwan" {
     tenant_id                       = local.secrets.tenant
     subscription_id                 = local.secrets.subscriptionId
     resource-group-name             = "automagic-vwan-${local.secrets.envId}"
-    location                        = "northeurope"
+    location                        = local.location
     vwan-name                       = "am-vwan"
     vwan-hub-name                   = "am-vwan-hub"
     vwan-hub-address-prefix         = "10.0.0.0/16"

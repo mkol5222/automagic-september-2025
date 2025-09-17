@@ -51,4 +51,16 @@ sudo apt install asciinema
 # store secrets with dotenvx
 
 source <(cat secrets/sp.json | jq -r 'to_entries[] | "dotenvx set TF_VAR_\(.key) \(.value)"' )
+
+### choose resource and link to Portal
+
+   # List all resource groups and their IDs
+   resource_groups=$(az group list --query "[].{name:name, id:id}" -o tsv)
+   # Use fzf to select one resource group
+   selected=$(echo "$resource_groups" | fzf --prompt="Select a resource group: " --with-nth=1)
+   echo $selected
+   resource_id=$(echo "$selected" | awk '{print $2}')
+   # Construct the Azure portal URL
+   url="https://portal.azure.com/#resource$resource_id"
+   echo $url
 ```

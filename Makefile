@@ -112,3 +112,5 @@ run:
 vwan-up: vwan
 vwan:
 	(cd vwan; ./up.sh)
+vwan-down:
+	(cd vwan; ./down.sh)
