@@ -63,4 +63,8 @@ source <(cat secrets/sp.json | jq -r 'to_entries[] | "dotenvx set TF_VAR_\(.key)
    # Construct the Azure portal URL
    url="https://portal.azure.com/#resource$resource_id"
    echo $url
+
+   ### az cli exts
+   az config set extension.dynamic_install_allow_preview=true
+   az config set extension.use_dynamic_install=yes_without_prompt
 ```

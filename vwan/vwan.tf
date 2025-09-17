@@ -3,7 +3,7 @@ provider "azurerm" {
 }
 
 locals {
-  location = "northeurope"
+  location = "westeurope"
 }
 
 module "vwan" {
