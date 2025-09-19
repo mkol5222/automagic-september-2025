@@ -50,3 +50,4 @@ policy/fingerprints.json
 
 .env.keys
 .env*
+policy/fingerprints.json
