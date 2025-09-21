@@ -19,6 +19,9 @@
   <h3>Resulting JSON:</h3>
   <pre id="output"></pre>
 
+    <h3>Resulting dotenvx cli:</h3>
+  <pre id="outputCli"></pre>
+
   <script>
     function parseText() {
       const text = document.getElementById('inputText').value;
@@ -51,6 +54,9 @@
       const randomHex = () => Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0');
       result.envId = randomHex();
       document.getElementById('output').textContent = JSON.stringify(result, null, 2);
+
+      let cliOutput = `npx @dotenvx/dotenvx set AZURE_SUBSCRIPTION_ID=${result.subscriptionId} AZURE_TENANT_ID=${result.tenant} AZURE_CLIENT_ID=${result.appId} AZURE_CLIENT_SECRET=${result.password} ENV_ID=${result.envId} DISPLAY_NAME="${result.displayName}"`;
+      document.getElementById('outputCli').textContent = cliOutput;
     }
   </script>
 </body>
