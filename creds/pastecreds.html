@@ -55,7 +55,18 @@
       result.envId = randomHex();
       document.getElementById('output').textContent = JSON.stringify(result, null, 2);
 
-      let cliOutput = `npx @dotenvx/dotenvx set AZURE_SUBSCRIPTION_ID=${result.subscriptionId} AZURE_TENANT_ID=${result.tenant} AZURE_CLIENT_ID=${result.appId} AZURE_CLIENT_SECRET=${result.password} ENV_ID=${result.envId} DISPLAY_NAME="${result.displayName}"`;
+      let cliOutput = `
+      touch .env
+
+      npx @dotenvx/dotenvx set TF_VAR_subscriptionId ${result.subscriptionId} 
+      npx @dotenvx/dotenvx set  TF_VAR_tenant ${result.tenant}
+      npx @dotenvx/dotenvx set  TF_VAR_appId ${result.appId} 
+      npx @dotenvx/dotenvx set TF_VAR_password ${result.password}
+      npx @dotenvx/dotenvx set  TF_VAR_envId ${result.envId}
+      npx @dotenvx/dotenvx set  TF_VAR_displayName "${result.displayName}"
+
+      npx @dotenvx/dotenvx run -- env | grep TF_VAR_
+      `;
       document.getElementById('outputCli').textContent = cliOutput;
     }
   </script>

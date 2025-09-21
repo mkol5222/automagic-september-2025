@@ -22,6 +22,8 @@ sp-login:
 	./scripts/sp-login.sh
 sp-delete:
 	./scripts/sp-delete.sh
+sp-loginx:
+	npx @dotenvx/dotenvx run -- ./scripts/sp-loginx.sh
 
 ###
 #
