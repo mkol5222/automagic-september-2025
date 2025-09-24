@@ -1,0 +1,8 @@
+cloud-architecture-diagram
+
+A {
+    B [icon: azure-network-security-groups] {
+        vm1 [icon: azure-virtual-machine]
+    }
+}
+ 
