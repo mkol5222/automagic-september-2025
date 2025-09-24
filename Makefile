@@ -19,11 +19,11 @@ cpman-api: management-api
 reader-test:
 	./scripts/reader-test.sh
 sp-login:
-	./scripts/sp-login.sh
+	dotenvx run -- ./scripts/sp-login.sh
 sp-delete:
-	./scripts/sp-delete.sh
+	dotenvx run -- ./scripts/sp-delete.sh
 sp-loginx:
-	npx @dotenvx/dotenvx run -- ./scripts/sp-loginx.sh
+	dotenvx run --  ./scripts/sp-loginx.sh
 
 ###
 #
@@ -31,21 +31,21 @@ sp-loginx:
 #
 management: management-up
 management-up:
-	(cd management; ./up.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./up.sh)
 management-down:
-	(cd management; ./down.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./down.sh)
 management-serial:
-	(cd management; ./serial.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./serial.sh)
 management-info:
-	(cd management; ./info.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./info.sh)
 management-ssh:
-	(cd management; ./ssh.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./ssh.sh)
 management-api:
-	(cd management; ./api.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./api.sh)
 management-secrets:
-	(cd management; ./secrets.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./secrets.sh)
 management-ssh-add-key:
-	(cd management; ./ssh-add-key.sh)
+	(cd management; dotenvx run -f ../.env -fk ../.env.keys -- ./ssh-add-key.sh)
 
 ###
 #
